@@ -42,20 +42,8 @@ public class LoginAction extends ActionSupport{
 		dataMap.clear();
 		User user2 = new User();
 		
-		Enumeration<String> nas = request.getParameterNames();
-		while(nas.hasMoreElements()){
-			String name = nas.nextElement();
-			if("username".equals(name))
-			{
-				String value = request.getParameter("username");
-				username = value;
-			}
-			if("password".equals(name))
-			{
-				String value = request.getParameter("password");
-				password = value; 
-			}
-		}
+		
+
 		System.out.println(username+"   "+password);
 		User user = userService.login(username, password);	//调用业务方法login
 		//如果user为空，则登录失败
