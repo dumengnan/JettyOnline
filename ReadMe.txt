@@ -13,3 +13,5 @@ database: project
 table1: user
 
 	
+数据传递的格式
+JSON
