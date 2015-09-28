@@ -10,11 +10,13 @@
     
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" /> 
 	<!-- 更改struts2请求Action的后缀名，默认为action。若想去掉后缀，设为","即可 -->
-	<constant name="struts.action.extension" value=","></constant>
+	<constant name="struts.action.extension" value="action"></constant>
 	
 	<package name="struts2" namespace="/" extends="struts-default,json-default">
 		<action name="login"
 						 class="loginAction">
+         <interceptor-ref name="json">
+        </interceptor-ref>
 						<result type="json">
 								<param name = "root">dataMap</param>
 						</result>
