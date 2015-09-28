@@ -42,7 +42,8 @@ public class LoginAction extends ActionSupport{
 		dataMap.clear();
 		User user2 = new User();
 		
-		
+		username = request.getParameter("username");
+		password=request.getParameter("password");
 
 		System.out.println(username+"   "+password);
 		User user = userService.login(username, password);	//调用业务方法login
