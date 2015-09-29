@@ -43,7 +43,7 @@ public class LoginAction extends ActionSupport{
 		//HttpServletRequest request=ServletActionContext.getRequest();	
 	    try{
 	    	JSONObject jsonObject = new JSONObject(jsonString);
-    	    username = jsonObject.getString("loginName");
+    	    username = jsonObject.getString("username");
 		    password = jsonObject.getString("password");   //取出json数据中的username和password参数
          System.out.println("username : "+ username+" "+"password: "+password);	
 	    }catch(Exception e){

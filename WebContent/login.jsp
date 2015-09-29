@@ -9,10 +9,10 @@
 <script type="text/javascript">
     $(function(){
         $("#submit").click(function(){
-            var loginName1 = $("input[name='loginName']").val();    //获取账号
+            var loginName1 = $("input[name='username']").val();    //获取账号
             var password1 = $("input[name='password']").val();        //获取密码
  
-            var jsonUser = {loginName:loginName1, password:password1};    //JSON对象
+            var jsonUser = {username:loginName1, password:password1};    //JSON对象
             //jsonUser.toString()这种方法错误,javaScript中的toString是用于布尔型变的,
             var strUser = JSON.stringify(jsonUser);    //将JSON对象转变成JSON格式的字符串,
          
@@ -22,7 +22,7 @@
             		     type:"POST",
             		     datatype:"json",
             	         data:JSON.stringify(data),
-            		     url:"login.action",
+            		     url:"login",
             		    contentType:"application/json",
             		    success:function(results){
             		    	var parsedJson =  $.parseJSON(results);
@@ -37,9 +37,10 @@
 </head>
 <body>
 <form action="/login" method="post">
-    账号<input type="text" name="loginName"/><br/>
+    账号<input type="text" name="username"/><br/>
     密码<input type="password" name="password"><br/>
     <input type="button" id="submit" value="登录"/>
+        <input type="button" id="register" value="注册"/>
 </form>
 </body>
 </html>
