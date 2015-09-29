@@ -40,6 +40,7 @@ public class LoginAction extends ActionSupport{
 	public String  execute() throws Exception{
 		String username =null;
 		String password = null;
+	
 		//HttpServletRequest request=ServletActionContext.getRequest();	
 	    try{
 	    	JSONObject jsonObject = new JSONObject(jsonString);

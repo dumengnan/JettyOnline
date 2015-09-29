@@ -4,15 +4,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>User Login</title>
+<title>User Register</title>
 <script type="text/javascript" src="./jquery.js"></script>
 <script type="text/javascript">
     $(function(){
         $("#submit").click(function(){
+        	console.log("hello world");
             var loginName1 = $("input[name='username']").val();    //获取账号
             var password1 = $("input[name='password']").val();        //获取密码
- 
-            var jsonUser = {username:loginName1, password:password1};    //JSON对象
+            var company1 = $("input[name='company']").val(); 
+ 			var gender1 = document.getElementById("select").value;
+            
+ 			if(gender1 == '男')
+ 				gender2 = 1;
+ 			else
+ 				gender2 = 0;
+ 			
+            console.log(gender2);
+            console.log(company1);
+            
+            var jsonUser = {username:loginName1, password:password1,gender:gender2,company:company1};    //JSON对象
             //jsonUser.toString()这种方法错误,javaScript中的toString是用于布尔型变的,
             var strUser = JSON.stringify(jsonUser);    //将JSON对象转变成JSON格式的字符串,
          
@@ -23,26 +34,26 @@
             		     datatype:"json",
             	         data:JSON.stringify(data),
             		     url:"login",
-            		    contentType:"application/json",
+            		    contentType:"application/json;charset=UTF-8",
             		    success:function(results){
             		    	var parsedJson =  $.parseJSON(results);
             		    	alert(results.name);
             		    }
             		 });
         });    
-        $("#register").click(function(){
-        	window.location.href="register.jsp";
-        });
     });
 </script>
 </head>
-
 <body>
-<form action="/login" method="post">
+<form action="/reguser" method="post">
     账号<input type="text" name="username"/><br/>
     密码<input type="password" name="password"><br/>
-    <input type="button" id="submit" value="登录"/>
-        <input type="button" id="register" value="注册"/>
+     性别 <select name="select" id = "select">
+  <option value="男">男</option>
+  <option value="女">女</option>
+  </select><br/>
+    公司<input type="text" name="company"/><br/>
+    <input type="button" id="submit" value="提交"/>
 </form>
 </body>
 </html>
