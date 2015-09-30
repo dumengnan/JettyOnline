@@ -27,13 +27,13 @@
             //jsonUser.toString()这种方法错误,javaScript中的toString是用于布尔型变的,
             var strUser = JSON.stringify(jsonUser);    //将JSON对象转变成JSON格式的字符串,
          
-            var data = {jsonString:strUser};
+            var data = {regUserString:strUser};
             
             	$.ajax({
             		     type:"POST",
             		     datatype:"json",
             	         data:JSON.stringify(data),
-            		     url:"login",
+            		     url:"reguser",
             		    contentType:"application/json;charset=UTF-8",
             		    success:function(results){
             		    	var parsedJson =  $.parseJSON(results);
