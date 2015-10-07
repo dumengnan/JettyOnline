@@ -91,9 +91,7 @@
 	<bean name="loginAction" class="com.jetty.action.LoginAction" >
 		<property name="userService" ref="userService"></property>
 	</bean>	
-	
-	<bean name="reguserAction" class="com.jetty.action.ReguserAction" ></bean>
-	
+
 	<bean name="userMainAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
 </beans>
 

@@ -65,7 +65,6 @@ public class LoginAction extends ActionSupport{
 			user2.setUsername(username);
 			user2.setPassword(password);
 			dataMap.put("user", user2);
-			dataMap.put("success", true);
 			
 			//request.getSession().setAttribute(Constants.SESSION_USER, user);
 			return SUCCESS;

@@ -24,10 +24,9 @@
             	         data:JSON.stringify(data),
             		     url:"login",
             		    contentType:"application/json",
-            		    success:function(results){
-            		    	var parsedJson =  $.parseJSON(results);
-            		    	alert(results.name);
-            		    }
+            		    success:function(result){
+            		    	alert('user    '+  result['user']['username'] + ' login success ');
+            		    }	
             		 });
         });    
         $("#register").click(function(){
