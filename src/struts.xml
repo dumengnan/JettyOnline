@@ -13,15 +13,22 @@
 	<constant name="struts.action.extension" value=","></constant>
 	
 	<package name="struts2" namespace="/" extends="struts-default,json-default">
-		<action name="login"
-						 class="loginAction">
-         <interceptor-ref name="json">
-        </interceptor-ref>
-						<result type="json">
-								<param name = "root">dataMap</param>
-						</result>
+	
+	 <interceptors>	
+     <interceptor-stack name="mydefault">
+	 <interceptor-ref name="defaultStack"/>
+	 <interceptor-ref name="json"/>
+    </interceptor-stack>
+</interceptors>
+
+<default-interceptor-ref name="mydefault"/>
+
+		<action name="userlog"
+						 class="userAction" method="Def">
+		<result type="json">
+							<param name = "root">dataMap</param>
+	   </result>
 		</action>
-		
 		<!-- 该action只负责跳转，用struts提供的ActionSupport
 		<action name="userMain" class="userMainAction">
 			<result name="success">/success.jsp</result>

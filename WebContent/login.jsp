@@ -22,7 +22,7 @@
             		     type:"POST",
             		     datatype:"json",
             	         data:JSON.stringify(data),
-            		     url:"login",
+            		     url:"userlog?type=login",
             		    contentType:"application/json",
             		    success:function(result){
             		    	alert('user    '+  result['user']['username'] + ' login success ');
