@@ -15,6 +15,11 @@ public class UserServiceImpl implements UserService {
 public User login(String username, String password){
 	return userDao.loginCheck(username, password);
 }
+
+@Override
+public User register(String username, String password,String company,int gender){
+	return userDao.regUser(username, password,company,gender);
+}
 	//@Override  
   //  public  void regUser(User user)  throws HibernateException{  
 		  //  User user = new User();  

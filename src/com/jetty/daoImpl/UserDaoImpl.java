@@ -23,5 +23,37 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 				return null;
 			}
 		}
+	
+	
+	@Override
+	public  User regUser(String username, String password,String company,int gender){
+	
+	// 定义HQL语句
+				String hql = "from User u where u.username=? ";
+				// 用find方法执行HQL语句
+				List<User> list = (List<User>) this.getHibernateTemplate().find(hql, new String[] { username});
+				if (list != null && list.size() > 0) 
+				{
+					//用户名重复
+					System.out.println("用户名重复");
+				} 
+				else 
+				{// 注册
+					User user=new User();
+					user.setGender(gender);
+					user.setUsername(username);
+					user.setPassword(password);
+					user.setCompany(company);
+					
+					try{
+						this.getHibernateTemplate().save(user);
+						System.out.println("注册成功");
+						}
+					catch (Exception e)
+					{e.printStackTrace();}
+					}
+
+				return null;
+	}
   
 }  
