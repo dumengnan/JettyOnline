@@ -1,7 +1,6 @@
 package com.jetty.action;
 
 import java.util.HashMap;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction  extends ActionSupport{
@@ -12,7 +11,16 @@ public class UserAction  extends ActionSupport{
 		private String type;
 		public HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		private LoginAction loginAction;
+		private ReguserAction reguserAction;
 		public String jsonString;
+		
+		public ReguserAction getReguserAction() {
+			return reguserAction;
+		}
+
+		public void setReguserAction(ReguserAction reguserAction) {
+			this.reguserAction = reguserAction;
+		}
 
 		public String getJsonString() {
 			return jsonString;
@@ -43,6 +51,10 @@ public class UserAction  extends ActionSupport{
 			if(type != null && type.equals("login"))
 			{
 					dataMap = loginAction.login(jsonString);
+			}
+			else if(type != null && type.equals("reguser"))
+			{
+					dataMap =reguserAction.reguser(jsonString);
 			}
 			return SUCCESS;
 		}

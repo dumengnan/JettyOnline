@@ -13,20 +13,18 @@
 	<constant name="struts.action.extension" value=","></constant>
 	
 	<package name="struts2" namespace="/" extends="struts-default,json-default">
-		    <interceptors>	
+	
+	 <interceptors>	
      <interceptor-stack name="mydefault">
 	 <interceptor-ref name="defaultStack"/>
 	 <interceptor-ref name="json"/>
     </interceptor-stack>
 </interceptors>
+
 <default-interceptor-ref name="mydefault"/>
 
 		<action name="userlog"
 						 class="userAction" method="Def">
-						 
-       <!-- <interceptor-ref name="json"   >
-        </interceptor-ref> -->
-       
 		<result type="json">
 							<param name = "root">dataMap</param>
 	   </result>
