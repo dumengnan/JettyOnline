@@ -34,18 +34,14 @@ public class LoginAction{
 	    }
 	    
 		loginMap.clear();
-		User user2 = new User();
-		
+	
 		User user = userService.login(username, password);	//调用业务方法login
 		//如果user为空，则登录失败
 		if (user == null) {
 			loginMap.put("success", false);
-			
 			return loginMap;
 		} else {
-			user2.setUsername(username);
-			user2.setPassword(password);
-			loginMap.put("user", user2);
+			loginMap.put("success", true);
 			return loginMap;
 			//request.getSession().setAttribute(Constants.SESSION_USER, user);
 		}

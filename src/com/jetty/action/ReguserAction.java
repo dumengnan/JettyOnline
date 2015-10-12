@@ -26,7 +26,8 @@ public class ReguserAction {
 		String password=null;
 		String company=null;
 		int gender=0;
-		System.out.println("reguser is runing");
+		
+		HashMap<String, Object> reguserMap = new HashMap<String, Object>();
 		
 		try{	
 			JSONObject jsonObject = new JSONObject(jsonString);
@@ -42,7 +43,13 @@ public class ReguserAction {
 	    }
 		
 		User user = userService.register(username, password,company,gender);
-		
-	return null;
+		if(user.getUsername() != null)
+		{
+			reguserMap.put("success", true);
+		}
+		else
+			reguserMap.put("success", false);
+			
+	return reguserMap;
 	}
 }
