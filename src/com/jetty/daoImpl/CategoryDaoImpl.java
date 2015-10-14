@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
     @Override
-    public Category listCategory() {
+    public List<Category> listCategory() {
 
         String hql = "from Category where pid=1";
         List<Category> list = (List<Category>) this.getHibernateTemplate().find(hql);
         for(Category category:list)
             System.out.println(category.getName());
-        System.out.print("listcategory runing"+list.get(1).getName());
-        return list.get(0);
+
+        return list;
     }
 }

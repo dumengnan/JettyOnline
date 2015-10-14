@@ -4,6 +4,8 @@ import com.jetty.beans.Category;
 import com.jetty.dao.CategoryDao;
 import com.jetty.service.CategoryService;
 
+import java.util.List;
+
 /**
  * Created by dci on 15-10-13.
  */
@@ -19,7 +21,7 @@ public class CategoryServiceImpl implements CategoryService{
     private CategoryDao categoryDao;
 
     @Override
-    public Category productCategory() {
+    public List<Category> productCategory() {
         return categoryDao.listCategory();
     }
 

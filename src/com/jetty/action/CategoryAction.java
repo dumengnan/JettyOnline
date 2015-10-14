@@ -2,10 +2,13 @@ package com.jetty.action;
 
 import com.jetty.beans.Category;
 import com.jetty.service.CategoryService;
+import com.opensymphony.xwork2.ActionSupport;
+
 
 import java.util.HashMap;
+import java.util.List;
 
-public class CategoryAction {
+public class CategoryAction extends ActionSupport {
 	private CategoryService categoryService;
 	private String type;
 	private float cate;
@@ -35,12 +38,17 @@ public class CategoryAction {
 	public CategoryService getCategoryService() {
 		return categoryService;
 	}
-	public HashMap<String, Object> listCategory() throws Exception{
+	public String listCategory() throws Exception{
 		System.out.println(type);
 		System.out.println(cate);
+		List<Category> categoryList;
 
-		category = categoryService.productCategory();
+		categoryList = categoryService.productCategory();
 
-		return categoryMap;
+		categoryMap.clear();
+
+		categoryMap.put("category",categoryList);
+
+		return SUCCESS;
 	}
 }
