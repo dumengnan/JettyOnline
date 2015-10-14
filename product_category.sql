@@ -3,7 +3,7 @@ use project;
 create table product_category
 (
 	id int primary key auto_increment,
-	category float,
+	category varchar(20),
 	name varchar(40),
 	pid int,
 	layer int

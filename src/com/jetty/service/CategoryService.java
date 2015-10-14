@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface CategoryService {
 
-    public List<Category> productCategory();
+    public List<Category> productCategory(String search_cate);
 }

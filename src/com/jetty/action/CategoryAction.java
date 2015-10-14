@@ -11,15 +11,15 @@ import java.util.List;
 public class CategoryAction extends ActionSupport {
 	private CategoryService categoryService;
 	private String type;
-	private float cate;
+	private String cate;
 	private Category category;
 	public HashMap<String, Object> categoryMap = new HashMap<String, Object>();
 
-	public float getCate() {
+	public String getCate() {
 		return cate;
 	}
 
-	public void setCate(float cate) {
+	public void setCate(String cate) {
 		this.cate = cate;
 	}
 
@@ -43,7 +43,7 @@ public class CategoryAction extends ActionSupport {
 		System.out.println(cate);
 		List<Category> categoryList;
 
-		categoryList = categoryService.productCategory();
+		categoryList = categoryService.productCategory(cate);
 
 		categoryMap.clear();
 

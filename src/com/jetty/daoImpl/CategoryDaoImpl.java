@@ -10,13 +10,22 @@ import java.util.List;
  */
 public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
     @Override
-    public List<Category> listCategory() {
+    public List<Category> listCategory(String search_cate) {
 
-        String hql = "from Category where pid=1";
+        String hql;
+        if(search_cate.equals("0"))
+             hql = "from Category where pid=1";
+        else
+        {
+            hql="from Category where category like "+"\'"+search_cate+"._"+"\'";
+        }
+
+        System.out.println("search string is :"+hql);
+
         List<Category> list = (List<Category>) this.getHibernateTemplate().find(hql);
         for(Category category:list)
             System.out.println(category.getName());
-
+        System.out.println("search cate is:  " + search_cate);
         return list;
     }
 }

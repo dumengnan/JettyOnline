@@ -8,5 +8,5 @@ import java.util.List;
  * Created by dci on 15-10-13.
  */
 public interface CategoryDao extends BaseDao{
-    List<Category>  listCategory();
+    List<Category>  listCategory(String search_cate);
 }
