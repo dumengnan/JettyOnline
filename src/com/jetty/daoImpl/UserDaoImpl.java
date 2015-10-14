@@ -14,7 +14,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			// 定义HQL语句
 			String hql = "from User u where u.username=? and u.password=?";
 			// 用find方法执行HQL语句
-			List<User> list = (List<User>) this.getHibernateTemplate().find(hql, new String[] { name, password });
+		List<User> list = (List<User>) this.getHibernateTemplate().find(hql, new String[] { name, password });
 			if (list != null && list.size() > 0) {// 登录成功
 				System.out.println("login successs");
 				logger.info("login check succ, user.name=" + list.get(0).getUsername());

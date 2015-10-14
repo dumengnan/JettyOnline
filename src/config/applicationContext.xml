@@ -33,13 +33,15 @@
     <!-- 如果使用配置文件 -->
 		 <property name="mappingLocations"> 
 		 <list> 
- 					<value>classpath:com/jetty/beans/User.hbm.xml</value> 
+ 					<value>classpath:com/jetty/beans/User.hbm.xml</value>
+			 		<value>classpath:com/jetty/beans/Category.hbm.xml</value>
 		</list>
 		 </property> 
 		 
 		<property name="annotatedClasses">
 			<list>
 				<value>com.jetty.beans.User</value>
+				<value>com.jetty.beans.Category</value>
 			</list>
 		</property>
 
@@ -61,8 +63,12 @@
 	
 	<bean id="userDao" class="com.jetty.daoImpl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>	
-	
+	</bean>
+
+	<bean id="categoryDao" class="com.jetty.daoImpl.CategoryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
 	<!-- 业务层 -->
 	<bean id="userServiceTarget" 
 		class="com.jetty.serviceImpl.UserServiceImpl">
@@ -87,9 +93,35 @@
 				<prop key="*">PROPAGATION_REQUIRED</prop>
 			</props>
 		</property>
-	</bean>	
+	</bean>
+	<!--商品分类展示部分-->
+	<bean id="categoryServiceTarget"
+		  class="com.jetty.serviceImpl.CategoryServiceImpl">
+		<property name="categoryDao" ref="categoryDao" />
+	</bean>
+	<bean id="categoryService"
+		  class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>com.jetty.service.CategoryService</value>
+		</property>
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="categoryServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="modify*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
 	
 	<!-- 表现层 -->
+	<!--用户注册登陆-->
 	<bean name="loginAction" class="com.jetty.action.LoginAction" >
 		<property name="userService" ref="userService"></property>
 	</bean>	
@@ -102,7 +134,10 @@
 	<property name="loginAction" ref="loginAction"></property>
 	<property name="reguserAction" ref="reguserAction"></property>
 	</bean>
-	
-	<bean name="userMainAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
+
+	<!--商品分类展示-->
+	<bean name="categoryAction" class="com.jetty.action.CategoryAction">
+		<property name="categoryService" ref="categoryService"></property>
+			</bean>
 </beans>
 

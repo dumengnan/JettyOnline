@@ -12,3 +12,4 @@ create table user
 );
 
 insert into user values(0,'hello', 'world','nanjinglzy', 1);
+insert into user values(1,'mee','123','nanjingqushi',0);
