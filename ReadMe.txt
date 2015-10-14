@@ -11,6 +11,7 @@ password:123456
 
 database: project
 table1: user
+table2: product_category
 
 	
 数据传递的格式
