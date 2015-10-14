@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.jetty.beans">
+	<class name="Category" table="product_category">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="native"></generator>
+		</id>
+
+		<property name="category" column="category" type="java.lang.Float"
+			not-null="true" length="10"></property>
+		<property name="name" column="name" type="java.lang.String"
+			not-null="true" length="40" ></property>
+		<property name="pid" column="pid"  type="java.lang.Integer"
+		not-null="true" length="2"></property>
+		<property name="layer" column="layer" type="java.lang.Integer"
+			length="5" ></property>
+	</class>
+</hibernate-mapping> 
