@@ -8,5 +8,5 @@ public interface UserService {
 	public User login(String username, String password);
   
 	public User register(String username, String password,String company,int gender);
-
+	//public User test(int i);
 }  

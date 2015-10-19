@@ -20,6 +20,7 @@ public User login(String username, String password){
 public User register(String username, String password,String company,int gender){
 	return userDao.regUser(username, password,company,gender);
 }
+
 	//@Override  
   //  public  void regUser(User user)  throws HibernateException{  
 		  //  User user = new User();  
