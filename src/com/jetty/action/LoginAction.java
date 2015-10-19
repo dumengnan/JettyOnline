@@ -5,7 +5,10 @@ import com.jetty.service.UserService;
 
 import java.util.HashMap;
 
+import org.apache.struts2.ServletActionContext;
 import org.json.JSONObject;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class LoginAction{  
 
@@ -21,7 +24,7 @@ public class LoginAction{
 		
 		HashMap<String, Object> loginMap = new HashMap<String, Object>();
 		
-		//HttpServletRequest request=ServletActionContext.getRequest();	
+		HttpServletRequest request= ServletActionContext.getRequest();
 	    try{
 	    	JSONObject jsonObject = new JSONObject(jsonString);
     	    username = jsonObject.getString("username");
@@ -36,6 +39,7 @@ public class LoginAction{
 		loginMap.clear();
 	
 		User user = userService.login(username, password);	//调用业务方法login
+		System.out.println(request.getSession());
 		//如果user为空，则登录失败
 		if (user == null) {
 			loginMap.put("success", false);

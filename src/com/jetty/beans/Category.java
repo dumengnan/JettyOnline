@@ -2,10 +2,10 @@ package com.jetty.beans;
 
 public class Category {
 	private int id;
-	private float category;
+	private String category;
 	private String name;
 	private int pid;
-	private int layer;
+	private String layer;
 
 	public int getId() {
 		return id;
@@ -14,10 +14,10 @@ public class Category {
 		this.id = id;
 	}
 
-	public float getCategory() {
+	public String getCategory() {
 		return category;
 	}
-	public void setCategory(float category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
@@ -35,10 +35,10 @@ public class Category {
 		this.pid = pid;
 	}
 
-	public int getLayer() {
+	public String getLayer() {
 		return layer;
 	}
-	public void setLayer(int layer) {
+	public void setLayer(String layer) {
 		this.layer = layer;
 	}
 }

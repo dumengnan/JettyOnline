@@ -1,6 +1,7 @@
 package com.jetty.service;
 
 import com.jetty.beans.Category;
+import com.jetty.beans.Detail;
 
 import java.util.List;
 
@@ -10,4 +11,5 @@ import java.util.List;
 public interface CategoryService {
 
     public List<Category> productCategory(String search_cate);
+    public Detail productDetail(int id);
 }

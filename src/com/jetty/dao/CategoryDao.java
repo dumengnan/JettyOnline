@@ -1,6 +1,7 @@
 package com.jetty.dao;
 
 import com.jetty.beans.Category;
+import com.jetty.beans.Detail;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ import java.util.List;
  */
 public interface CategoryDao extends BaseDao{
     List<Category>  listCategory(String search_cate);
+    Detail listDetail(int id);
 }

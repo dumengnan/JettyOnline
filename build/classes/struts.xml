@@ -11,29 +11,33 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" /> 
 	<!-- 更改struts2请求Action的后缀名，默认为action。若想去掉后缀，设为","即可 -->
 	<constant name="struts.action.extension" value=","></constant>
-	
+
+
 	<package name="struts2" namespace="/" extends="struts-default,json-default">
 	
 	 <interceptors>	
-     <interceptor-stack name="mydefault">
-	 <interceptor-ref name="defaultStack"/>
-	 <interceptor-ref name="json"/>
-    </interceptor-stack>
-</interceptors>
+		 <interceptor-stack name="mydefault">
+		 <interceptor-ref name="defaultStack"/>
+		 <interceptor-ref name="json"/>
+		 </interceptor-stack>
+     </interceptors>
 
 <default-interceptor-ref name="mydefault"/>
 
 		<action name="userlog"
 						 class="userAction" method="Def">
 		<result type="json">
-							<param name = "root">dataMap</param>
+			<param name = "root">dataMap</param>
 	   </result>
 		</action>
 
 		<action name="category"
 				class="categoryAction" method="listCategory">
-			<result type="json">
+			<result name ="success" type="json">
 				<param name = "root">categoryMap</param>
+			</result>
+			<result name="error" type="httpheader">
+				<param name="status">400</param>
 			</result>
 		</action>
 
