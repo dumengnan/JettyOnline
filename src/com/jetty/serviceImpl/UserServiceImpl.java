@@ -12,12 +12,12 @@ public class UserServiceImpl implements UserService {
 		this.userDao = userDao;
 	}
 @Override
-public User login(String username, String password){
+public int login(String username, String password){
 	return userDao.loginCheck(username, password);
 }
 
 @Override
-public User register(String username, String password,String company,int gender){
+public int register(String username, String password,String company,int gender){
 	return userDao.regUser(username, password,company,gender);
 }
 

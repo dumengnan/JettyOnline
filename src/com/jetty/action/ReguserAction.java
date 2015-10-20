@@ -20,12 +20,13 @@ public class ReguserAction {
 	}
 
 	
-	public  HashMap<String, Object>  reguser(String jsonString) throws Exception{
+	public  int  reguser(String jsonString) throws Exception{
 		
 		String username =null;
 		String password=null;
 		String company=null;
 		int gender=0;
+		int register_return;
 		
 		HashMap<String, Object> reguserMap = new HashMap<String, Object>();
 		
@@ -42,14 +43,9 @@ public class ReguserAction {
 	    	throw e;
 	    }
 		
-		User user = userService.register(username, password,company,gender);
-		if(user.getUsername() != null)
-		{
-			reguserMap.put("success", true);
-		}
-		else
-			reguserMap.put("success", false);
-			
-	return reguserMap;
+		register_return = userService.register(username, password,company,gender);
+
+		return register_return;
+
 	}
 }

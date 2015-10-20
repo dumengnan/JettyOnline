@@ -18,9 +18,10 @@ public class LoginAction{
 		this.userService = userService;
 	}
 	//动作方法
-	public  HashMap<String, Object>  login(String jsonString) throws Exception{
+	public  int  login(String jsonString) throws Exception{
 		String username =null;
 		String password = null;
+		int login_return;
 		
 		HashMap<String, Object> loginMap = new HashMap<String, Object>();
 		
@@ -38,16 +39,21 @@ public class LoginAction{
 	    
 		loginMap.clear();
 	
-		User user = userService.login(username, password);	//调用业务方法login
+		login_return = userService.login(username, password);	//调用业务方法login
+
 		System.out.println(request.getSession());
+
+		System.out.println("login_result "+ login_return);
+
+		return login_return;
 		//如果user为空，则登录失败
-		if (user == null) {
-			loginMap.put("success", false);
-			return loginMap;
-		} else {
-			loginMap.put("success", true);
-			return loginMap;
-			//request.getSession().setAttribute(Constants.SESSION_USER, user);
-		}
+//		if (login_ret == null) {
+//			//loginMap.put("success", false);
+//			return loginMap;
+//		} else {
+//			//loginMap.put("success", true);
+//			return loginMap;
+//			//request.getSession().setAttribute(Constants.SESSION_USER, user);
+//		}
 	}
 }  
