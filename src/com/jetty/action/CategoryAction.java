@@ -1,6 +1,7 @@
 package com.jetty.action;
 
 import com.jetty.beans.Category;
+import com.jetty.beans.Detail;
 import com.jetty.service.CategoryService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -12,8 +13,19 @@ public class CategoryAction extends ActionSupport {
 	private CategoryService categoryService;
 	private String type;
 	private String cate;
-	private Category category;
+
+	private int id;
+
 	public HashMap<String, Object> categoryMap = new HashMap<String, Object>();
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public String getCate() {
 		return cate;
@@ -41,14 +53,30 @@ public class CategoryAction extends ActionSupport {
 	public String listCategory() throws Exception{
 		System.out.println(type);
 		System.out.println(cate);
+		System.out.println(id);
 		List<Category> categoryList;
+		Detail detailStr;
 
-		categoryList = categoryService.productCategory(cate);
+		if(cate != null && type.equals("search")) { //商品分类请求方法调用
+			categoryList = categoryService.productCategory(cate);
 
-		categoryMap.clear();
+			categoryMap.clear();
 
-		categoryMap.put("category",categoryList);
+			categoryMap.put("category", categoryList);
+			return SUCCESS;
+		}
+		else
+			if(id != 0 && type.equals("detail")){//商品详情方法调用
 
-		return SUCCESS;
+				detailStr = categoryService.productDetail(id);
+				categoryMap.clear();
+
+				categoryMap.put("detail",detailStr);
+
+				return SUCCESS;
+			}
+		else
+			return ERROR;
+
 	}
 }
