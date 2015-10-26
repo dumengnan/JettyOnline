@@ -9,4 +9,6 @@ public interface UserService {
   
 	public int register(String username, String password,String company,int gender);
 
+	public int renewpass(String username, String newpass);
+
 }  

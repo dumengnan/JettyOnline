@@ -131,10 +131,14 @@
 	<bean name="reguserAction" class="com.jetty.action.ReguserAction" >
 		<property name="userService" ref="userService"></property>
 	</bean>	
-	
+	<bean name="newpasswordAction" class="com.jetty.action.NewPasswordAction" >
+		<property name="userService" ref="userService"></property>
+	</bean>
+
 	<bean name="userAction" class="com.jetty.action.UserAction">
 	<property name="loginAction" ref="loginAction"></property>
 	<property name="reguserAction" ref="reguserAction"></property>
+		<property name="newpasswordAction" ref="newpasswordAction"></property>
 	</bean>
 
 	<!--商品分类展示-->

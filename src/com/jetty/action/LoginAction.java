@@ -46,13 +46,6 @@ public class LoginAction{
 		System.out.println("login_result "+ login_return);
 
 		return login_return;
-		//如果user为空，则登录失败
-//		if (login_ret == null) {
-//			//loginMap.put("success", false);
-//			return loginMap;
-//		} else {
-//			//loginMap.put("success", true);
-//			return loginMap;
 //			//request.getSession().setAttribute(Constants.SESSION_USER, user);
 //		}
 	}

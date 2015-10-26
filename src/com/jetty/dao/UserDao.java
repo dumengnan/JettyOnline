@@ -9,4 +9,5 @@ public interface UserDao extends BaseDao {
   //  public void saveObject(Object obj) throws HibernateException; 
 		
 		public int regUser(String username, String password,String company,int gender);
+	    public int renewPass(String username, String password);
 }  
