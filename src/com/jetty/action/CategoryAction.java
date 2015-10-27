@@ -2,7 +2,6 @@ package com.jetty.action;
 
 import com.jetty.beans.Category;
 import com.jetty.beans.Detail;
-//import com.jetty.beans.Question;
 import com.jetty.service.CategoryService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -15,18 +14,17 @@ public class CategoryAction extends ActionSupport {
 	private String type;
 	private String cate;
 
-	private int id;
+	private int productid;
 
 	public HashMap<String, Object> categoryMap = new HashMap<String, Object>();
 
-	public int getId() {
-		return id;
+	public int getProductid() {
+		return productid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setProductid(int productid) {
+		this.productid = productid;
 	}
-
 
 	public String getCate() {
 		return cate;
@@ -54,10 +52,9 @@ public class CategoryAction extends ActionSupport {
 	public String listCategory() throws Exception{
 		System.out.println(type);
 		System.out.println(cate);
-		System.out.println(id);
+		System.out.println(productid);
 		List<Category> categoryList;
 		Detail detailStr;
-		//Question questionStr;
 
 		if(cate != null && type.equals("search")) { //商品分类请求方法调用
 			categoryList = categoryService.productCategory(cate);
@@ -68,9 +65,9 @@ public class CategoryAction extends ActionSupport {
 			return SUCCESS;
 		}
 		else
-			if(id != 0 && type.equals("detail")){//商品详情方法调用
+			if(productid != 0 && type.equals("detail")){//商品详情方法调用
 
-				detailStr = categoryService.productDetail(id);
+				detailStr = categoryService.productDetail(productid);
 				categoryMap.clear();
 
 				categoryMap.put("detail",detailStr);
@@ -78,15 +75,12 @@ public class CategoryAction extends ActionSupport {
 				return SUCCESS;
 			}
 		else
-			/*if (id != 0 && type.equals("question")){
-				questionStr = categoryService.productQuestion(id);
-				categoryMap.clear();
+			if(productid != 0 && type.equals("image")){//获取影像信息方法调用
 
-				categoryMap.put("question",questionStr);
+				categoryMap = categoryService.getimagename(productid);
 
 				return SUCCESS;
 			}
-		else*/
 			return ERROR;
 
 	}
