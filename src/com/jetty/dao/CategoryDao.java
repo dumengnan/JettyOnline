@@ -15,4 +15,5 @@ public interface CategoryDao extends BaseDao{
     List<Category>  listCategory(String search_cate);
     Detail listDetail(int id);
     Description listDescription(int id);
+    HashMap<String,Object> getImageInfo(int product_id);
 }

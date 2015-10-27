@@ -77,20 +77,23 @@ public class CategoryAction extends ActionSupport {
 				return SUCCESS;
 			}
 		else
-			if(id !=0 && type.equals("description")){//商品描述调用
 			if(productid != 0 && type.equals("image")){//获取影像信息方法调用
 
-				System.out.println("商品描述调用");
 				categoryMap = categoryService.getimagename(productid);
 
-				descriptionStr=categoryService.productDescription(id);
-				categoryMap.clear();
-				categoryMap.put("description",descriptionStr);
-				System.out.println(descriptionStr.getDes());
 				return SUCCESS;
 			}
 		else
-				return ERROR;
+			if(productid !=0 && type.equals("description")) {//商品描述调用
+
+				descriptionStr=categoryService.productDescription(productid);
+				categoryMap.clear();
+				categoryMap.put("description",descriptionStr);
+				System.out.println(descriptionStr.getDes());
+
+				return SUCCESS;
+
+			}
 			return ERROR;
 
 	}

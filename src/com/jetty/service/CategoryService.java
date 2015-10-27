@@ -15,4 +15,5 @@ public interface CategoryService {
     public List<Category> productCategory(String search_cate);
     public Detail productDetail(int id);
     public Description productDescription(int id);
+    public HashMap<String,Object> getimagename(int product_id);
 }
