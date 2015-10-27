@@ -3,6 +3,7 @@ package com.jetty.serviceImpl;
 import com.jetty.beans.Category;
 import com.jetty.beans.Description;
 import com.jetty.beans.Detail;
+import com.jetty.beans.Question;
 import com.jetty.dao.CategoryDao;
 import com.jetty.service.CategoryService;
 
@@ -35,6 +36,10 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public Description productDescription(int id){
         return categoryDao.listDescription(id);
+    }
+    @Override
+    public Question productQuestion(int id){
+        return categoryDao.listQuestion(id);
     }
 
     @Override

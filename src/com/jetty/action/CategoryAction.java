@@ -3,6 +3,7 @@ package com.jetty.action;
 import com.jetty.beans.Category;
 import com.jetty.beans.Description;
 import com.jetty.beans.Detail;
+import com.jetty.beans.Question;
 import com.jetty.service.CategoryService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -57,6 +58,7 @@ public class CategoryAction extends ActionSupport {
 		List<Category> categoryList;
 		Detail detailStr;
 		Description descriptionStr;
+		Question questionStr;
 
 		if(cate != null && type.equals("search")) { //商品分类请求方法调用
 			categoryList = categoryService.productCategory(cate);
@@ -93,6 +95,13 @@ public class CategoryAction extends ActionSupport {
 
 				return SUCCESS;
 
+			}
+		else
+			if(productid != 0 && type.equals("question")){ //商品问题调用
+				questionStr = categoryService.productQuestion(productid);
+				categoryMap.clear();
+				categoryMap.put("question",questionStr);
+				System.out.println(questionStr.getQuestion());
 			}
 			return ERROR;
 
