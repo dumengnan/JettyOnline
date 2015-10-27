@@ -1,8 +1,8 @@
 package com.jetty.action;
 
 import com.jetty.beans.Category;
-import com.jetty.beans.Description;
 import com.jetty.beans.Detail;
+//import com.jetty.beans.Question;
 import com.jetty.service.CategoryService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -15,17 +15,18 @@ public class CategoryAction extends ActionSupport {
 	private String type;
 	private String cate;
 
-	private int productid;
+	private int id;
 
 	public HashMap<String, Object> categoryMap = new HashMap<String, Object>();
 
-	public int getProductid() {
-		return productid;
+	public int getId() {
+		return id;
 	}
 
-	public void setProductid(int productid) {
-		this.productid = productid;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 
 	public String getCate() {
 		return cate;
@@ -53,10 +54,10 @@ public class CategoryAction extends ActionSupport {
 	public String listCategory() throws Exception{
 		System.out.println(type);
 		System.out.println(cate);
-		System.out.println(productid);
+		System.out.println(id);
 		List<Category> categoryList;
 		Detail detailStr;
-		Description descriptionStr;
+		//Question questionStr;
 
 		if(cate != null && type.equals("search")) { //商品分类请求方法调用
 			categoryList = categoryService.productCategory(cate);
@@ -67,9 +68,9 @@ public class CategoryAction extends ActionSupport {
 			return SUCCESS;
 		}
 		else
-			if(productid != 0 && type.equals("detail")){//商品详情方法调用
+			if(id != 0 && type.equals("detail")){//商品详情方法调用
 
-				detailStr = categoryService.productDetail(productid);
+				detailStr = categoryService.productDetail(id);
 				categoryMap.clear();
 
 				categoryMap.put("detail",detailStr);
@@ -77,24 +78,15 @@ public class CategoryAction extends ActionSupport {
 				return SUCCESS;
 			}
 		else
-			if(id !=0 && type.equals("description")){//商品描述调用
-
-				System.out.println("商品描述调用");
-
-				descriptionStr=categoryService.productDescription(id);
+			/*if (id != 0 && type.equals("question")){
+				questionStr = categoryService.productQuestion(id);
 				categoryMap.clear();
-				categoryMap.put("description",descriptionStr);
-				System.out.println(descriptionStr.getDes());
-				return SUCCESS;
-			}
-		else
-				return ERROR;
-			if(productid != 0 && type.equals("image")){//获取影像信息方法调用
 
-				categoryMap = categoryService.getimagename(productid);
+				categoryMap.put("question",questionStr);
 
 				return SUCCESS;
 			}
+		else*/
 			return ERROR;
 
 	}

@@ -1,12 +1,11 @@
 package com.jetty.serviceImpl;
 
 import com.jetty.beans.Category;
-import com.jetty.beans.Description;
 import com.jetty.beans.Detail;
+//import com.jetty.beans.Question;
 import com.jetty.dao.CategoryDao;
 import com.jetty.service.CategoryService;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,13 +31,9 @@ public class CategoryServiceImpl implements CategoryService{
     public Detail productDetail(int id) {
         return categoryDao.listDetail(id);
     }
-    @Override
-    public Description productDescription(int id){
-        return categoryDao.listDescription(id);
-    }
 
-    @Override
-    public HashMap<String, Object> getimagename(int product_id) {
-        return categoryDao.getImageInfo(product_id);
-    }
+   /* @Override
+    public Question productQuestion(int id) {
+        return categoryDao.listQuestion(id);
+    }*/
 }

@@ -11,7 +11,7 @@
         $("#submit").click(function(){
             var loginName1 = $("input[name='username']").val();    //获取账号
             var password1 = $("input[name='password']").val();        //获取密码
- 
+
             var jsonUser = {username:loginName1, password:password1};    //JSON对象
             //jsonUser.toString()这种方法错误,javaScript中的toString是用于布尔型变的,
             var strUser = JSON.stringify(jsonUser);    //将JSON对象转变成JSON格式的字符串,
@@ -28,6 +28,7 @@
             		    	alert('user    '+  result['user']['username'] + ' login success ');
             		    }	
             		 });
+            window.location.href="welcome.jsp";
         });    
         $("#register").click(function(){
         	window.location.href="register.jsp";
