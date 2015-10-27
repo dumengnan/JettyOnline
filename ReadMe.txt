@@ -27,3 +27,7 @@ JSON
 5.存在冲突的要解决完冲突之后再提交
 
 eg: git commit -m 'Change the Readme Add submit code specification by dumengnan'
+
+Help--->register
+name:itey
+key:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1

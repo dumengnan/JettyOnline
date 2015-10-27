@@ -1,10 +1,12 @@
 package com.jetty.daoImpl;
 
 import com.jetty.beans.Category;
+import com.jetty.beans.Description;
 import com.jetty.beans.Detail;
-//import com.jetty.beans.Question;
 import com.jetty.dao.CategoryDao;
+import org.omg.PortableInterceptor.SUCCESSFUL;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.List;
 
 /**
@@ -43,6 +45,11 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
         return list.get(0);
     }
 
-
-
+    @Override
+    public Description listDescription(int id){
+        String hql = "from Description where id = ?";
+        List<Description> list=(List<Description>) this.getHibernateTemplate().find(hql,id);
+        System.out.println(list.get(0).getDes());
+        return list.get(0);
+    }
 }
