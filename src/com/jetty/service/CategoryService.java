@@ -1,6 +1,7 @@
 package com.jetty.service;
 
 import com.jetty.beans.Category;
+import com.jetty.beans.Description;
 import com.jetty.beans.Detail;
 
 import java.util.HashMap;
@@ -13,4 +14,5 @@ public interface CategoryService {
 
     public List<Category> productCategory(String search_cate);
     public Detail productDetail(int id);
+    public Description productDescription(int id);
 }
