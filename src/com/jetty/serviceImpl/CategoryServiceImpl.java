@@ -5,6 +5,7 @@ import com.jetty.beans.Detail;
 import com.jetty.dao.CategoryDao;
 import com.jetty.service.CategoryService;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,5 +30,10 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public Detail productDetail(int id) {
         return categoryDao.listDetail(id);
+    }
+
+    @Override
+    public HashMap<String, Object> getimagename(int product_id) {
+        return categoryDao.getImageInfo(product_id);
     }
 }

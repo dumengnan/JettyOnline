@@ -14,18 +14,17 @@ public class CategoryAction extends ActionSupport {
 	private String type;
 	private String cate;
 
-	private int id;
+	private int productid;
 
 	public HashMap<String, Object> categoryMap = new HashMap<String, Object>();
 
-	public int getId() {
-		return id;
+	public int getProductid() {
+		return productid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setProductid(int productid) {
+		this.productid = productid;
 	}
-
 
 	public String getCate() {
 		return cate;
@@ -53,7 +52,7 @@ public class CategoryAction extends ActionSupport {
 	public String listCategory() throws Exception{
 		System.out.println(type);
 		System.out.println(cate);
-		System.out.println(id);
+		System.out.println(productid);
 		List<Category> categoryList;
 		Detail detailStr;
 
@@ -66,9 +65,9 @@ public class CategoryAction extends ActionSupport {
 			return SUCCESS;
 		}
 		else
-			if(id != 0 && type.equals("detail")){//商品详情方法调用
+			if(productid != 0 && type.equals("detail")){//商品详情方法调用
 
-				detailStr = categoryService.productDetail(id);
+				detailStr = categoryService.productDetail(productid);
 				categoryMap.clear();
 
 				categoryMap.put("detail",detailStr);
@@ -76,6 +75,12 @@ public class CategoryAction extends ActionSupport {
 				return SUCCESS;
 			}
 		else
+			if(productid != 0 && type.equals("image")){//获取影像信息方法调用
+
+				categoryMap = categoryService.getimagename(productid);
+
+				return SUCCESS;
+			}
 			return ERROR;
 
 	}
