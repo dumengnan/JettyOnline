@@ -58,6 +58,9 @@
 			</result>
 		</action>
 
+
+
+
 		<!-- 该action只负责跳转，用struts提供的ActionSupport
 		<action name="userMain" class="userMainAction">
 			<result name="success">/success.jsp</result>

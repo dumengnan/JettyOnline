@@ -1,6 +1,7 @@
 package com.jetty.dao;
 
 import com.jetty.beans.Category;
+import com.jetty.beans.Description;
 import com.jetty.beans.Detail;
 
 import java.util.HashMap;
@@ -13,4 +14,5 @@ public interface CategoryDao extends BaseDao{
     List<Category>  listCategory(String search_cate);
     Detail listDetail(int id);
     HashMap<String,Object> getImageInfo(int product_id);
+    Description listDescription(int id);
 }
