@@ -36,7 +36,7 @@ public class ReguserAction {
 			password = jsonObject.getString("password");
 			company = jsonObject.getString("company");
 			gender=jsonObject.getInt("gender");
-	   System.out.println("username : "+ username+" password: "+password+" company:"+company+" gender "+gender);
+	   		System.out.println("username : "+ username+" password: "+password+" company:"+company+" gender "+gender);
 		}catch(Exception e){
 	    	System.out.println(e);
 	    	e.printStackTrace();

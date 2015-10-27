@@ -21,7 +21,11 @@ public int register(String username, String password,String company,int gender){
 	return userDao.regUser(username, password,company,gender);
 }
 
-	//@Override  
+	@Override
+	public int renewpass(String username, String newpass) {
+		return userDao.renewPass(username, newpass);
+	}
+	//@Override
   //  public  void regUser(User user)  throws HibernateException{  
 		  //  User user = new User();  
 	      //  BeanUtils.copyProperties(userForm, user); 

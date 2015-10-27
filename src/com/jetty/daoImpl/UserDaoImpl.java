@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.jetty.beans.User;
-import com.jetty.dao.UserDao;  
-  
+import com.jetty.dao.UserDao;
+
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {  
 
 	
@@ -73,6 +73,29 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 				}
 
 
+	}
+	@Override
+	public int renewPass(String username, String newpass){
+
+		try{
+			String hql = "from User u where u.username=? ";
+			// 用find方法执行HQL语句
+			List<User> list = (List<User>) this.getHibernateTemplate().find(hql, new String[] { username});//找出用户名所在的对象
+			if(list != null && list.size() >0){
+				User user = list.get(0);
+
+				user.setPassword(newpass);//设置新的密码
+				this.getHibernateTemplate().clear();//在更新对象之前必须要调用clear方法,否则会报异常
+				this.getHibernateTemplate().update(user);
+
+				return user.getId();
+			}
+			else
+				return -4;
+		}catch (Exception e){
+			e.printStackTrace();
+			return -4;
+		}
 	}
   
 }  

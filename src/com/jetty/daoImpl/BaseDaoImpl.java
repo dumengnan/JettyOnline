@@ -41,6 +41,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao {
 
 	// 修改实体
 	public <T> void updateEntity(T entity) {
+		this.getHibernateTemplate().clear();
 		this.getHibernateTemplate().saveOrUpdate(entity);
 	}
 }

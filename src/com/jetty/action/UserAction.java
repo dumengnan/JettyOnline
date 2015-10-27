@@ -12,8 +12,17 @@ public class UserAction  extends ActionSupport{
 		public HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		private LoginAction loginAction;
 		private ReguserAction reguserAction;
+		private NewPasswordAction newpasswordAction;
 		public String jsonString;
-		
+
+		public NewPasswordAction getNewpasswordAction() {
+			return newpasswordAction;
+		}
+
+		public void setNewpasswordAction(NewPasswordAction newpasswordAction) {
+			this.newpasswordAction = newpasswordAction;
+		}
+
 		public ReguserAction getReguserAction() {
 			return reguserAction;
 		}
@@ -50,6 +59,7 @@ public class UserAction  extends ActionSupport{
 			System.out.println(jsonString);
 			int register_result;
 			int login_result;
+			int renewpass_result;
 
 			dataMap.clear();
 
@@ -79,7 +89,15 @@ public class UserAction  extends ActionSupport{
 				} else
 					return ERROR;
 			}
-			else
+			else if(type != null && type.equals("renewpassword")){//调用修改密码接口部分
+				renewpass_result = newpasswordAction.renewpassword(jsonString);
+				if(renewpass_result == -4) //修改密码出现错误
+					return ERROR;
+				else{
+					dataMap.put("userid",renewpass_result);
+					return SUCCESS;//成功返回用户id
+				}
+			}else
 				return ERROR;
 
 		}
