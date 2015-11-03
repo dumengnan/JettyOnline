@@ -12,7 +12,7 @@
 
             <property name="question" column="question" type="java.lang.String"
                       length="25"></property>
-            <property name="anwser" column="anwser" type="java.lang.String"
+            <property name="answer" column="answer" type="java.lang.String"
                       length="150"></property>
             <property name="pid" type="java.lang.Integer"><column name="productid" /></property>
 
