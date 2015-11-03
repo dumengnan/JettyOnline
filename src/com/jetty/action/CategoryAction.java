@@ -6,6 +6,7 @@ import com.jetty.beans.Detail;
 import com.jetty.beans.Question;
 import com.jetty.service.CategoryService;
 import com.opensymphony.xwork2.ActionSupport;
+import javassist.runtime.Desc;
 
 
 import java.util.HashMap;
@@ -68,7 +69,7 @@ public class CategoryAction extends ActionSupport {
 		List<HashMap<String,String>> productList;
 		
 		Detail detailStr;
-		Description descriptionStr;
+
 		Question questionStr;
 
 		if(cate != null || cateid != 0 && type.equals("search")) { //商品分类请求方法调用
@@ -107,10 +108,15 @@ public class CategoryAction extends ActionSupport {
 		else
 			if(productid !=0 && type.equals("description")) {//商品描述调用
 
+				List<Description> descriptionStr;
+
 				descriptionStr=categoryService.productDescription(productid);
 				categoryMap.clear();
 				categoryMap.put("description",descriptionStr);
-				System.out.println(descriptionStr.getDes());
+
+				for(Description desc:descriptionStr){
+					System.out.println(desc.getDes());
+				}
 
 				return SUCCESS;
 

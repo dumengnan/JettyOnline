@@ -38,7 +38,7 @@ public class CategoryServiceImpl implements CategoryService{
         return categoryDao.listDetail(id);
     }
     @Override
-    public Description productDescription(int id){
+    public List<Description> productDescription(int id){
         return categoryDao.listDescription(id);
     }
     @Override

@@ -6,13 +6,11 @@ import com.jetty.beans.Detail;
 import com.jetty.beans.Question;
 import com.jetty.dao.CategoryDao;
 
-import java.lang.reflect.Executable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.io.InputStream;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
@@ -122,12 +120,11 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
     }
 
     @Override
-    public Description listDescription(int id){
+    public List<Description> listDescription(int id){
         String hql = "from Description where productid = ?";
         try {
             List<Description> list = (List<Description>) this.getHibernateTemplate().find(hql, id);
-            System.out.println(list.get(0).getDes());
-            return list.get(0);
+            return list;
         }catch (Exception e){
             e.printStackTrace();
         }
