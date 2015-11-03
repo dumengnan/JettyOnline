@@ -1,28 +1,28 @@
 package com.jetty.beans;
 
+import java.util.List;
+
 /**
  * Created by mee on 15-10-19.
  */
 public class Detail {
-
-    private int productid;//商品id
+    private int id;//商品id
     private int cateid;//商品分类id
     private String name;//商品名称
     private float price;//商品价格
     private float weight;//商品重量
     private String image;//图片信息
-    private String video;//视频信息
     private String color;//商品颜色
     private String brand;//商品品牌
     private String other;//其他信息
 
 
-    public int getProductid() {
-        return productid;
+    public int getId() {
+        return id;
     }
 
-    public void setProductid(int productid) {
-        this.productid = productid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCateid() {
@@ -58,20 +58,12 @@ public class Detail {
     public void setWeight(float weight) {
         this.weight = weight;
     }
-    public String getImage() {
+    public  String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public String getVideo() {
-        return video;
-    }
-
-    public void setVideo(String video) {
-        this.video = video;
     }
 
     public String getColor() {

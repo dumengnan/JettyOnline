@@ -14,6 +14,7 @@ import java.util.List;
 public interface CategoryService {
 
     public List<Category> productCategory(String search_cate);
+    public List<HashMap<String,String>> listproduct(int cateid);
     public Detail productDetail(int id);
     public Description productDescription(int id);
     public Question productQuestion(int id);

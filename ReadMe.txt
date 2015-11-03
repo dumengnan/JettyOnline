@@ -11,8 +11,10 @@ password:123456
 
 database: project
 table1: user
-table2: product_category
-table3: product_detail
+table2: product_category  商品分类表
+table3: product_detail    商品详情表
+table4: product_question  商品问答表
+table5: product_description 商品描述信息表
 
 	
 数据传递的格式

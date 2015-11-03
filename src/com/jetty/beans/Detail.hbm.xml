@@ -5,8 +5,9 @@
 
 <hibernate-mapping package="com.jetty.beans">
     <class name="Detail" table="product_detail">
-        <id name="productid" type="java.lang.Integer">
-            <column name="productid" />
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native"></generator>
         </id>
         <property name="cateid" column="cateid" type="java.lang.Integer"
                   not-null="true" length="11"></property>
@@ -17,8 +18,6 @@
         <property name="weight" column="weight"  type="java.lang.Float"
                   not-null="true" length="10"></property>
         <property name="image" column="image" type="java.lang.String"
-                  length="40"></property>
-        <property name="video" column="video" type="java.lang.String"
                   length="40"></property>
         <property name="color" column="color" type="java.lang.String"
                   length="20" ></property>

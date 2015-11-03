@@ -17,8 +17,17 @@ public class CategoryAction extends ActionSupport {
 	private String cate;
 
 	private int productid;
+	private int cateid;
 
 	public HashMap<String, Object> categoryMap = new HashMap<String, Object>();
+
+	public int getCateid() {
+		return cateid;
+	}
+
+	public void setCateid(int cateid) {
+		this.cateid = cateid;
+	}
 
 	public int getProductid() {
 		return productid;
@@ -56,16 +65,26 @@ public class CategoryAction extends ActionSupport {
 		System.out.println(cate);
 		System.out.println(productid);
 		List<Category> categoryList;
+		List<HashMap<String,String>> productList;
+		
 		Detail detailStr;
 		Description descriptionStr;
 		Question questionStr;
 
-		if(cate != null && type.equals("search")) { //商品分类请求方法调用
-			categoryList = categoryService.productCategory(cate);
+		if(cate != null || cateid != 0 && type.equals("search")) { //商品分类请求方法调用
+			if(cate != null) {
+				categoryList = categoryService.productCategory(cate);
 
-			categoryMap.clear();
+				categoryMap.clear();
 
-			categoryMap.put("category", categoryList);
+				categoryMap.put("category", categoryList);
+			}else if(cateid != 0){
+
+				productList = categoryService.listproduct(cateid);
+				categoryMap.clear();
+				categoryMap.put("products",productList);
+
+			}
 			return SUCCESS;
 		}
 		else

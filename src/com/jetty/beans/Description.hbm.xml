@@ -12,6 +12,8 @@
 
         <property name="des" column="des" type="java.lang.String"
                   not-null="true" length="40" ></property>
+        <property name="productid" column="productid" type="java.lang.Integer"
+                length="11"></property>
 
     </class>
 </hibernate-mapping>

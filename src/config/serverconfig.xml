@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<config>
+    <server-info>
+        <server-ip>127.0.0.1</server-ip>
+        <server-port>8080</server-port>
+    </server-info>
+</config>

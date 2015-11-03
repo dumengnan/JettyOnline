@@ -30,6 +30,10 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
+    public List<HashMap<String,String>> listproduct(int cateid){
+        return categoryDao.listcateProduct(cateid);
+    }
+    @Override
     public Detail productDetail(int id) {
         return categoryDao.listDetail(id);
     }

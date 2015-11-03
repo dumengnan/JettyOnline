@@ -1,15 +1,16 @@
 
-use project;
-drop table if exists product_category;
+USE project;
+DROP TABLE IF EXISTS product_category;
 
-create table product_category
+CREATE TABLE product_category
 (
-	id int primary key auto_increment,
-	category varchar(20),
-	name varchar(40),
-	pid int,
-	layer varchar(20)
-) character set utf8;
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	category VARCHAR(20),
+	name VARCHAR(40),
+	pid INT,
+	layer VARCHAR(20),
+	PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into product_category values(1,'0','根',0,'0');
 insert into product_category values(2,'1','服饰',1,'10000');
@@ -32,7 +33,6 @@ insert into product_category values(80,'1.1.3.4','领带',14,'01010304');
 
 insert into product_category values(75,	'1.1.1.1',  '休闲运动衣',     12, '01010101');
 insert into product_category values(76,	'1.1.2.1',  '居家睡衣',     13, '01010201');
-insert into product_category values(77,	'1.1.2.2',  '居家拖鞋',     13, '01010201');
 
 insert into product_category values(81, '4.1','童装',5,'40100');
 insert into product_category values(82, '4.2','宝宝用品',5,'40200');
