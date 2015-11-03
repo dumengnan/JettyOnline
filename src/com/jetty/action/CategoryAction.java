@@ -76,12 +76,12 @@ public class CategoryAction extends ActionSupport {
 				categoryList = categoryService.productCategory(cate);
 
 				categoryMap.clear();
-
+				cate = null;    //调用完成后需要将变量清空，否则会影响下次判断
 				categoryMap.put("category", categoryList);
 			}else if(cateid != 0){
-
 				productList = categoryService.listproduct(cateid);
 				categoryMap.clear();
+				cateid = 0;
 				categoryMap.put("products",productList);
 
 			}
@@ -92,7 +92,7 @@ public class CategoryAction extends ActionSupport {
 
 				detailStr = categoryService.productDetail(productid);
 				categoryMap.clear();
-
+				productid = 0;
 				categoryMap.put("detail",detailStr);
 
 				return SUCCESS;
@@ -101,7 +101,7 @@ public class CategoryAction extends ActionSupport {
 			if(productid != 0 && type.equals("image")){//获取影像信息方法调用
 
 				categoryMap = categoryService.getimagename(productid);
-
+				productid = 0;
 				return SUCCESS;
 			}
 		else
@@ -109,6 +109,7 @@ public class CategoryAction extends ActionSupport {
 
 				descriptionStr=categoryService.productDescription(productid);
 				categoryMap.clear();
+				productid = 0;
 				categoryMap.put("description",descriptionStr);
 				System.out.println(descriptionStr.getDes());
 
@@ -119,8 +120,9 @@ public class CategoryAction extends ActionSupport {
 			if(productid != 0 && type.equals("question")){ //商品问题调用
 				questionStr = categoryService.productQuestion(productid);
 				categoryMap.clear();
+				productid = 0;
 				categoryMap.put("question",questionStr);
-				System.out.println(questionStr.getQuestion());
+				return SUCCESS;
 			}
 			return ERROR;
 

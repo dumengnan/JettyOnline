@@ -8,8 +8,16 @@ package com.jetty.beans;
 public class Question {
     private int id;
     private String question;
-    private String anwser;
+    private String answer;
     private int pid;
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -17,10 +25,6 @@ public class Question {
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public void setAnwser(String anwser) {
-        this.anwser = anwser;
     }
 
     public void setPid(int pid) {
@@ -33,10 +37,6 @@ public class Question {
 
     public String getQuestion() {
         return question;
-    }
-
-    public String getAnwser() {
-        return anwser;
     }
 
     public int getPid() {
