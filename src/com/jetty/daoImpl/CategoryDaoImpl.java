@@ -125,12 +125,11 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
     }
 
     @Override
-    public Description listDescription(int id){//获取商品描述信息
+    public List<Description> listDescription(int id){
         String hql = "from Description where productid = ?";
         try {
             List<Description> list = (List<Description>) this.getHibernateTemplate().find(hql, id);
-            System.out.println(list.get(0).getDes());
-            return list.get(0);
+            return list;
         }catch (Exception e){
             e.printStackTrace();
         }
