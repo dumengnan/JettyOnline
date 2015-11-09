@@ -1,6 +1,5 @@
 USE project;
 
-DROP TABLE IF EXISTS product_description;
 
 CREATE TABLE product_description
 (

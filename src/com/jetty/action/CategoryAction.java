@@ -99,7 +99,6 @@ public class CategoryAction extends ActionSupport {
 			}
 		else
 			if(productid != 0 && type.equals("image")){//获取影像信息方法调用
-
 				categoryMap = categoryService.getimagename(productid);
 				productid = 0;
 				return SUCCESS;
@@ -114,7 +113,6 @@ public class CategoryAction extends ActionSupport {
 				System.out.println(descriptionStr.getDes());
 
 				return SUCCESS;
-
 			}
 		else
 			if(productid != 0 && type.equals("question")){ //商品问题调用

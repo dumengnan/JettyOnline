@@ -1,9 +1,6 @@
 package com.jetty.daoImpl;
 
-import com.jetty.beans.Category;
-import com.jetty.beans.Description;
-import com.jetty.beans.Detail;
-import com.jetty.beans.Question;
+import com.jetty.beans.*;
 import com.jetty.dao.CategoryDao;
 
 import java.lang.reflect.Executable;
@@ -21,7 +18,7 @@ import org.dom4j.io.SAXReader;
  */
 public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
     @Override
-    public List<Category> listCategory(String search_cate) {
+    public List<Category> listCategory(String search_cate) {//获取商品分类
         String hql;
         if(search_cate.equals("0"))
              hql = "from Category where pid=1";
@@ -41,7 +38,7 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
 
         return null;
     }
-    public String AcquireServerInfo(){
+    public String AcquireServerInfo(){//获取配置文件serverconfig.xml中的服务器ｉｐ地址和端口号
         String serverip = null;
         String serverport = null;
 
@@ -63,7 +60,7 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
         return serverip+":"+serverport;
     }
     @Override
-    public List<HashMap<String,String>> listcateProduct(int cateid){
+    public List<HashMap<String,String>> listcateProduct(int cateid){//获取最后一层的商品分类
         String serverinfo = AcquireServerInfo();
         System.out.println("serverinfo :" + serverinfo);
 
@@ -88,7 +85,7 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
     }
 
     @Override
-    public Detail listDetail(int id) {
+    public Detail listDetail(int id) {//获取商品详情
         String hql = "from Detail where id = ?";
         try {
             List<Detail> list = (List<Detail>) this.getHibernateTemplate().find(hql, id);
@@ -105,14 +102,20 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
     }
 
     @Override
-    public HashMap<String, Object> getImageInfo(int product_id) {
+    public HashMap<String, Object> getImageInfo(int product_id) {//获取商品相关图片
         HashMap<String,Object> imagemap = new HashMap<String,Object>();
+        String serverinfo = AcquireServerInfo();
 
-        String hql = "from Detail where id = ?";
+        String hql = "from Image where productid = ?";
         try {
-            List<Detail> list = (List<Detail>) this.getHibernateTemplate().find(hql, product_id);
+            List<Image> list = (List<Image>) this.getHibernateTemplate().find(hql, product_id);
+            String imageinfo ="";
+            for(Image image:list){
+                imageinfo = "http://" + serverinfo + "/image?type=get&name=" + image.getImagename()+","+imageinfo;
+            }
+            imageinfo = imageinfo.substring(0,imageinfo.length()-1); //去除字符串拼接后最后面的逗号
 
-            imagemap.put("image", list.get(0).getImage());
+            imagemap.put("image",imageinfo);
 
             return imagemap;
         }catch (Exception e){
@@ -122,7 +125,7 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
     }
 
     @Override
-    public Description listDescription(int id){
+    public Description listDescription(int id){//获取商品描述信息
         String hql = "from Description where productid = ?";
         try {
             List<Description> list = (List<Description>) this.getHibernateTemplate().find(hql, id);
@@ -134,7 +137,7 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
         return null;
     }
     @Override
-    public Question listQuestion(int id){
+    public Question listQuestion(int id){//获取商品问答信息
         String hql = "from Question where productid = ?";
         try {
             List<Question> list = (List<Question>) this.getHibernateTemplate().find(hql, id);

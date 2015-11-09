@@ -1,5 +1,4 @@
 USE project;
-DROP TABLE IF EXISTS product_question;
 
 CREATE TABLE `product_question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

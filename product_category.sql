@@ -1,5 +1,9 @@
 
 USE project;
+DROP TABLE IF EXISTS product_image;
+DROP TABLE IF EXISTS product_description;
+DROP TABLE IF EXISTS product_question;
+DROP TABLE IF EXISTS product_detail;
 DROP TABLE IF EXISTS product_category;
 
 CREATE TABLE product_category
