@@ -70,8 +70,6 @@ public class CategoryAction extends ActionSupport {
 		
 		Detail detailStr;
 
-		Question questionStr;
-
 		if(cate != null || cateid != 0 && type.equals("search")) { //商品分类请求方法调用
 			if(cate != null) {
 				categoryList = categoryService.productCategory(cate);
@@ -122,10 +120,15 @@ public class CategoryAction extends ActionSupport {
 			}
 		else
 			if(productid != 0 && type.equals("question")){ //商品问题调用
-				questionStr = categoryService.productQuestion(productid);
+				List<Question> questionStr;
+
+				questionStr=categoryService.productQuestion(productid);
 				categoryMap.clear();
 				productid = 0;
-				categoryMap.put("question",questionStr);
+
+				for(Question desc:questionStr) {
+					categoryMap.put("question", questionStr);
+				}
 				return SUCCESS;
 			}
 			return ERROR;

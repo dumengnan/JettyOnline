@@ -17,6 +17,6 @@ public interface CategoryService {
     public List<HashMap<String,String>> listproduct(int cateid);
     public Detail productDetail(int id);
     public List<Description> productDescription(int id);
-    public Question productQuestion(int id);
+    public List<Question> productQuestion(int id);
     public HashMap<String,Object> getimagename(int product_id);
 }
