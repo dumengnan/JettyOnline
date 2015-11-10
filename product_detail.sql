@@ -16,5 +16,5 @@ CREATE TABLE product_detail
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-INSERT INTO product_detail VALUES (1,80,"与狼共舞多彩T恤衫","129","0.1","01.jpg","[\"白\",\"黄\"]","七匹狼","");
+INSERT INTO product_detail VALUES (1,80,"与狼共舞多彩T恤衫","129","0.1","01.jpg","白,黄","七匹狼","");
 INSERT INTO product_detail VALUEs (2,80,"杰克琼斯魅力衬衫","399","1.1","02.jpg","白","杰克琼斯","");
