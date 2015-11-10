@@ -16,6 +16,8 @@ table3: product_detail    商品详情表
 table4: product_question  商品问答表
 table5: product_description 商品描述信息表
 
+数据库批量插入数据脚本
+batchexec.sh (sql文件存放路径根位置自行修改)
 	
 数据传递的格式
 JSON
