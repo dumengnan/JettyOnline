@@ -90,14 +90,11 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
         try {
             List<Detail> list = (List<Detail>) this.getHibernateTemplate().find(hql, id);
 
-            for (Detail detail : list)
-                System.out.println(detail.getColor());
             return list.get(0);
 
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return null;
     }
 

@@ -8,8 +8,6 @@ import org.json.JSONObject;
  */
 public class NewPasswordAction {
 
-
-
     private UserService userService;
     private int newpass_return;
 
