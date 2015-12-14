@@ -39,6 +39,7 @@
                 <value>classpath:com/jetty/beans/Description.hbm.xml</value>
                 <value>classpath:com/jetty/beans/Question.hbm.xml</value>
                 <value>classpath:com/jetty/beans/Image.hbm.xml</value>
+                <value>classpath:com/jetty/beans/Lecture.hbm.xml</value>
             </list>
         </property>
 
@@ -49,6 +50,7 @@
                 <value>com.jetty.beans.Detail</value>
                 <value>com.jetty.beans.Question</value>
                 <value>com.jetty.beans.Image</value>
+                <value>com.jetty.beans.Lecture</value>
             </list>
         </property>
 
@@ -74,6 +76,10 @@
 
     <bean id="categoryDao" class="com.jetty.daoImpl.CategoryDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id ="lectureDao" class="com.jetty.daoImpl.LectureDaoImpl">
+            <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <!-- 业务层 -->
@@ -127,6 +133,32 @@
         </property>
     </bean>
 
+    <bean id="lectureServiceTarget"
+            class="com.jetty.serviceImpl.LectureServiceImpl">
+        <property name="lectureDao" ref="lectureDao"/>
+    </bean>
+
+    <bean id="lectureService"
+            class = "org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <value>com.jetty.service.LectureService</value>
+        </property>
+        <property name="transactionManager">
+            <ref bean="myTransactionManager" />
+        </property>
+        <property name="target">
+            <ref bean="lectureServiceTarget" />
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="modify*">PROPAGATION_REQUIRED</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
     <!-- 表现层 -->
     <!--用户注册登陆-->
     <bean name="loginAction" class="com.jetty.action.LoginAction" >
@@ -145,6 +177,12 @@
     <!--商品分类展示-->
     <bean name="categoryAction" class="com.jetty.action.CategoryAction">
         <property name="categoryService" ref="categoryService"></property>
+    </bean>
+    <!--上传下载-->
+    <bean name ="Binary" class="com.jetty.action.BinaryAction"></bean>
+    <!--产品讲座-->
+    <bean name ="Lecture" class="com.jetty.action.GetLectureAction">
+        <property name="lectureService" ref="lectureService"></property>
     </bean>
 </beans>
 
