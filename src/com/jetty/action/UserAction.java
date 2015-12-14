@@ -1,7 +1,13 @@
 package com.jetty.action;
 
 import java.util.HashMap;
+
+import com.jetty.common.Constants;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+import org.aspectj.apache.bcel.classfile.Constant;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class UserAction  extends ActionSupport{
 		/**

@@ -22,7 +22,7 @@
             		     type:"POST",
             		     datatype:"json",
             	         data:JSON.stringify(data),
-            		     url:"userlog?type=renewpassword",
+            		     url:"userlog?type=logins",
             		    contentType:"application/json",
             		    success:function(result){
             		    	alert('user    '+  result['user']['username'] + ' login success ');

@@ -1,6 +1,7 @@
 package com.jetty.action;
 
 import com.jetty.beans.User;
+import com.jetty.common.Constants;
 import com.jetty.service.UserService;
 
 import java.util.HashMap;
@@ -40,13 +41,13 @@ public class LoginAction{
 		loginMap.clear();
 	
 		login_return = userService.login(username, password);	//调用业务方法login
-
-		System.out.println(request.getSession());
+		if(login_return <= 0){
+			request.setAttribute("msg","login failed");
+		}else
+			request.getSession().setAttribute(Constants.SESSION_USER, username);
 
 		System.out.println("login_result "+ login_return);
 
 		return login_return;
-//			//request.getSession().setAttribute(Constants.SESSION_USER, user);
-//		}
 	}
 }  
