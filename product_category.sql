@@ -97,8 +97,8 @@ insert into product_category values(77,'3.3.3.1','八角菱形藤席',52,'030303
 insert into product_category values(78,'3.3.3.2','回字藤席',52,'03030302');
 insert into product_category values(79,'3.3.3.3','泰迪熊儿童席',52,'03030303');
 insert into product_category values(80,'3.3.3.3','夏季凉席',52,'03030304');
-insert into product_category values(81,'4.1','童装',5,'40100');
-insert into product_category values(82,'4.2','宝宝用品',5,'40200');
+insert into product_category values(81, '4.1','童装',5,'40100');
+insert into product_category values(82, '4.2','宝宝用品',5,'40200');
 insert into product_category values(83, '4.1.1','鞋子',81,'04010100');
 insert into product_category values(84, '4.1.2','帽子',81,'04010200');
 insert into product_category values(85, '4.1.1.1','小天才儿童鞋',83,'04010101');
