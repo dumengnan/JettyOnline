@@ -12,7 +12,7 @@ CREATE TABLE product_detail
 	color VARCHAR(20),
 	brand VARCHAR(20),
 	other VARCHAR(40),
-	FOREIGN KEY (cateid) REFERENCES product_detail(id) ON DELETE CASCADE,
+	FOREIGN KEY (cateid) REFERENCES product_category(id) ON DELETE CASCADE,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

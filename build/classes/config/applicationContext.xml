@@ -146,5 +146,7 @@
     <bean name="categoryAction" class="com.jetty.action.CategoryAction">
         <property name="categoryService" ref="categoryService"></property>
     </bean>
+    <!--上传下载-->
+    <bean name ="Binary" class="com.jetty.action.BinaryAction"></bean>
 </beans>
 
