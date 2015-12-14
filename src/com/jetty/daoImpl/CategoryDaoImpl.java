@@ -38,27 +38,6 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
 
         return null;
     }
-    public String AcquireServerInfo(){//获取配置文件serverconfig.xml中的服务器ｉｐ地址和端口号
-        String serverip = null;
-        String serverport = null;
-
-        SAXReader reader = new SAXReader();
-        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("/config/serverconfig.xml");
-
-        try{
-            Document doc = reader.read(in);
-
-            Element serveripElt = (Element) doc.selectObject("/config/server-info/server-ip");
-            Element serverportElt = (Element) doc.selectObject("/config/server-info/server-port");
-
-            serverip = serveripElt.getStringValue();
-            serverport = serverportElt.getStringValue();
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return serverip+":"+serverport;
-    }
     @Override
     public List<HashMap<String,String>> listcateProduct(int cateid){//获取最后一层的商品分类
         String serverinfo = AcquireServerInfo();

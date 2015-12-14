@@ -23,7 +23,7 @@
      </interceptors>
 
 <default-interceptor-ref name="mydefault"/>
-
+        <!--用户注册登录-->
 		<action name="userlog"
 						 class="userAction" method="Def">
 		<result name="success" type="json">
@@ -47,7 +47,7 @@
 			</result>
 		</action>
 
-
+        <!--商品分类-->
 		<action name="category"
 				class="categoryAction" method="listCategory">
 			<result name ="success" type="json">
@@ -58,6 +58,7 @@
 			</result>
 		</action>
 
+        <!--产品图片视频信息-->
 		<action name="img"
 				class="com.jetty.action.GetImageAction">
 			<result name="IMG" type="stream">
@@ -73,12 +74,8 @@
 				<param name="bufferSize">1024</param>
 			</result>
 		</action>
-		<!-- 该action只负责跳转，用struts提供的ActionSupport
-		<action name="userMain" class="userMainAction">
-			<result name="success">/success.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action> -->
 
+        <!--上传下载-->
 		<action name="binary" class="Binary">
 			<result name="ADD" type="json">
 				<param name="root">dataMap</param>
@@ -90,6 +87,16 @@
 			</result>
 		</action>
 
+        <!--产品讲座-->
+        <action name="lecture" class="Lecture"
+                method="getLecture">
+            <result name="success" type="json">
+                    <param name="root">lectureDataMap</param>
+            </result>
+            <result name="error" type = "httpheader">
+                <param name="status">400</param>
+            </result>
+        </action>
 	</package>
 
 	<!-- 包含的配置文件 -->

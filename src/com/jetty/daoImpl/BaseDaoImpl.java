@@ -1,9 +1,13 @@
 package com.jetty.daoImpl;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.jetty.dao.BaseDao;
@@ -43,5 +47,27 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao {
 	public <T> void updateEntity(T entity) {
 		this.getHibernateTemplate().clear();
 		this.getHibernateTemplate().saveOrUpdate(entity);
+	}
+
+	public String AcquireServerInfo(){//获取配置文件serverconfig.xml中的服务器ｉｐ地址和端口号
+		String serverip = null;
+		String serverport = null;
+
+		SAXReader reader = new SAXReader();
+		InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("/config/serverconfig.xml");
+
+		try{
+			Document doc = reader.read(in);
+
+			Element serveripElt = (Element) doc.selectObject("/config/server-info/server-ip");
+			Element serverportElt = (Element) doc.selectObject("/config/server-info/server-port");
+
+			serverip = serveripElt.getStringValue();
+			serverport = serverportElt.getStringValue();
+
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return serverip+":"+serverport;
 	}
 }

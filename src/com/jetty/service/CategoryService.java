@@ -13,10 +13,10 @@ import java.util.List;
  */
 public interface CategoryService {
 
-    public List<Category> productCategory(String search_cate);
-    public List<HashMap<String,String>> listproduct(int cateid);
-    public Detail productDetail(int id);
-    public List<Description> productDescription(int id);
-    public List<Question> productQuestion(int id);
-    public HashMap<String,Object> getimagename(int product_id);
+     List<Category> productCategory(String search_cate);
+     List<HashMap<String,String>> listproduct(int cateid);
+     Detail productDetail(int id);
+     List<Description> productDescription(int id);
+     List<Question> productQuestion(int id);
+     HashMap<String,Object> getimagename(int product_id);
 }
