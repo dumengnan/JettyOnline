@@ -38,7 +38,7 @@ public class GetLectureAction extends ActionSupport{
     public void setLectureService(LectureService lectureService) {
         this.lectureService = lectureService;
     }
-    HashMap<String,String> lectureDataMap = new HashMap<String,String>();
+    public HashMap<String,String> lectureDataMap = new HashMap<String,String>();
     public String getLecture() throws Exception{
 
         if(opt.equals("get") && page > 0){

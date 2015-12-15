@@ -184,7 +184,5 @@
     <bean name ="Lecture" class="com.jetty.action.GetLectureAction">
         <property name="lectureService" ref="lectureService"></property>
     </bean>
-    <!--上传下载-->
-    <bean name ="Binary" class="com.jetty.action.BinaryAction"></bean>
 </beans>
 
