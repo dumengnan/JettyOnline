@@ -120,6 +120,7 @@ public class BinaryAction extends ActionSupport{
     {
         if(opt.equals("add"))
         {
+            opt= "";
             String root = ServletActionContext.getServletContext().getRealPath("/upload");
             InputStream is = new FileInputStream(file);
             OutputStream os = new FileOutputStream(new File(root, fileFileName));
@@ -142,6 +143,7 @@ public class BinaryAction extends ActionSupport{
 
         if(opt.equals("get"))
         {
+            opt= "";
             String root = ServletActionContext.getServletContext().getRealPath("/upload");
             String path=root+"/"+name;
             //System.out.println(path);
@@ -169,6 +171,6 @@ public class BinaryAction extends ActionSupport{
             return GET;
         }
 
-        return SUCCESS;
+        return ERROR;
     }
 }
