@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.jetty.beans">
+    <class name="Experience" table="experience">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native"></generator>
+        </id>
+
+        <property name="name" column="name" type="java.lang.String"
+                  not-null="true" length="40"></property>
+        <property name="question" column="question" type="java.lang.String"
+                  not-null="true" length="40" ></property>
+        <property name="a" column="a"  type="java.lang.String"
+                  not-null="true" length="40"></property>
+        <property name="b" column="b" type="java.lang.String"
+                  not-null="true" length="40"></property>
+        <property name="c" column="c" type="java.lang.String"
+                  not-null="true" length="40"></property>
+        <property name="d" column="d" type="java.lang.String"
+                  not-null="true" length="40"></property>
+        <property name="image" column="image" type="java.lang.String"
+                  not-null="true" length="40"></property>
+    </class>
+</hibernate-mapping>

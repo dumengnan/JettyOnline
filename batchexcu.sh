@@ -15,5 +15,6 @@ mysql -u$user -p$passwd < $sqlpath/product_detail.sql;
 mysql -u$user -p$passwd < $sqlpath/product_description.sql;
 mysql -u$user -p$passwd < $sqlpath/product_question.sql;
 mysql -u$user -p$passwd < $sqlpath/product_image.sql;
+mysql -u$user -p$passwd < $sqlpath/product_experience.sql;
 
 mysql -u$user -p$passwd < $sqlpath/lecture.sql;
