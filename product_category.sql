@@ -69,6 +69,7 @@ insert into product_category values(49,'3.2.3','锅具',42,'03020300');
 insert into product_category values(50,'3.3.1','毛毯',43,'03030100');
 insert into product_category values(51,'3.3.2','枕芯',43,'03030200');
 insert into product_category values(52,'3.3.3','凉席',43,'03030300');
+
 insert into product_category values(53,'3.1.1.1','墙饰复古工业风',44,'03010101');
 insert into product_category values(54,'3.1.1.2','壁饰欧式地中海',44,'03010102');
 insert into product_category values(55,'3.1.1.3','壁饰美式立体',  44,'03010103');
@@ -78,9 +79,10 @@ insert into product_category values(58,'3.1.2.3','美式古典风景油画',45,'
 insert into product_category values(59,'3.1.3.1','国唯美玫瑰高仿真花卉',46,'03010301');
 insert into product_category values(60,'3.1.3.2','鱼西美屋蔷薇高仿真花卉',46,'03010302');
 insert into product_category values(61,'3.1.3.3','唯美月季高仿真花卉',46,'03010303');
-insert into product_category values(62,'3.2.1.1','玻璃杯',47,'03020101');
+insert into product_category values(62,'3.2.1.1','玻璃水杯 高硼硅玻璃办公杯',47,'03020101');
 insert into product_category values(63,'3.2.1.2','高脚杯',47,'03020102');
 insert into product_category values(64,'3.2.1.3','旅行杯',47,'03020103');
+
 insert into product_category values(65,'3.2.2.1','传统中式果盘',48,'03020201');
 insert into product_category values(66,'3.2.2.2','美式田园果盘',48,'03020202');
 insert into product_category values(67,'3.2.2.3','欧式镂空果盘',48,'03020203');
@@ -97,6 +99,7 @@ insert into product_category values(77,'3.3.3.1','八角菱形藤席',52,'030303
 insert into product_category values(78,'3.3.3.2','回字藤席',52,'03030302');
 insert into product_category values(79,'3.3.3.3','泰迪熊儿童席',52,'03030303');
 insert into product_category values(80,'3.3.3.3','夏季凉席',52,'03030304');
+
 insert into product_category values(81, '4.1','童装',5,'40100');
 insert into product_category values(82, '4.2','宝宝用品',5,'40200');
 insert into product_category values(83, '4.1.1','鞋子',81,'04010100');
