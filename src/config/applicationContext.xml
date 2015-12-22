@@ -12,7 +12,7 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/project" />
+        <property name="url" value="jdbc:mysql://localhost:3306/project?useunicode=true&amp;characterEncoding=utf8" />
         <property name="username" value="root" />
         <property name="password" value="123456" />
     </bean>
@@ -40,6 +40,7 @@
                 <value>classpath:com/jetty/beans/Question.hbm.xml</value>
                 <value>classpath:com/jetty/beans/Image.hbm.xml</value>
                 <value>classpath:com/jetty/beans/Lecture.hbm.xml</value>
+                <value>classpath:com/jetty/beans/Experience.hbm.xml</value>
             </list>
         </property>
 
@@ -51,6 +52,7 @@
                 <value>com.jetty.beans.Question</value>
                 <value>com.jetty.beans.Image</value>
                 <value>com.jetty.beans.Lecture</value>
+                <value>com.jetty.beans.Experience</value>
             </list>
         </property>
 
@@ -80,6 +82,10 @@
 
     <bean id ="lectureDao" class="com.jetty.daoImpl.LectureDaoImpl">
             <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="expDao" class="com.jetty.daoImpl.ExpDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
     <!-- 业务层 -->
@@ -159,6 +165,32 @@
         </property>
     </bean>
 
+    <!-- 有奖体验部分 -->
+    <bean id="expServiceTarget"
+          class="com.jetty.serviceImpl.ExpServiceImpl">
+        <property name="expDao" ref="expDao" />
+    </bean>
+    <bean id="expService"
+          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <value>com.jetty.service.ExpService</value>
+        </property>
+        <property name="transactionManager">
+            <ref bean="myTransactionManager" />
+        </property>
+        <property name="target">
+            <ref bean="expServiceTarget" />
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="modify*">PROPAGATION_REQUIRED</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
     <!-- 表现层 -->
     <!--用户注册登陆-->
     <bean name="loginAction" class="com.jetty.action.LoginAction" >
@@ -184,5 +216,10 @@
     <bean name ="Lecture" class="com.jetty.action.GetLectureAction">
         <property name="lectureService" ref="lectureService"></property>
     </bean>
+    <!-- 有奖体验 -->
+    <bean name="Practise" class="com.jetty.action.PractiseAction">
+        <property name="expService" ref="expService"></property>
+    </bean>
+
 </beans>
 

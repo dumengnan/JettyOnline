@@ -51,7 +51,7 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
             for (Detail detail : list) {
                 HashMap<String, String> productmap = new HashMap<String, String>();
                 productmap.put("id", detail.getId() + "");
-                productmap.put("image", "http://" + serverinfo + "/image?type=get&name=" + detail.getImage());
+                productmap.put("image", "http://" + serverinfo + "/img?type=get&name=" + detail.getImage());
                 productmap.put("name", detail.getName());
                 productlist.add(productmap);
             }
@@ -87,7 +87,7 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao{
             List<Image> list = (List<Image>) this.getHibernateTemplate().find(hql, product_id);
             String imageinfo ="";
             for(Image image:list){
-                imageinfo = "http://" + serverinfo + "/image?type=get&name=" + image.getImagename()+","+imageinfo;
+                imageinfo = "http://" + serverinfo + "/img?type=get&name=" + image.getImagename()+","+imageinfo;
             }
             imageinfo = imageinfo.substring(0,imageinfo.length()-1); //去除字符串拼接后最后面的逗号
 

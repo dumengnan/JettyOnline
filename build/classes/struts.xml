@@ -12,6 +12,9 @@
 	<!-- 更改struts2请求Action的后缀名，默认为action。若想去掉后缀，设为","即可 -->
 	<constant name="struts.action.extension" value=","></constant>
 
+    <!-- 设置文件上传的大小为200M,默认２Ｍ -->
+    <constant name="struts.multipart.maxSize" value="209715200" />
+
 
 	<package name="struts2" namespace="/" extends="struts-default,json-default">
 	
@@ -97,6 +100,23 @@
                 <param name="status">400</param>
             </result>
         </action>
+
+		<!-- 有奖体验-->
+		<action name="practise"  class="Practise">
+			<result name="list" type="json">
+				<param name="root">data1Map</param>
+			</result>
+			<result name="result" type="json">
+				<param name="root">data2Map</param>
+			</result>
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="error" type="httpheader">
+				<param name="status">400</param>
+			</result>
+		</action>
+
 	</package>
 
 	<!-- 包含的配置文件 -->
